@@ -206,7 +206,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(
                                     new LatLng(mLastKnownLocation.getLatitude(),
                                             mLastKnownLocation.getLongitude()), DEFAULT_ZOOM));
-                            Log.e("last loca", String.valueOf(mLastKnownLocation));
                             sendLocationSMS("9106371048", mLastKnownLocation);
                         } else {
                             Log.d(TAG, "Current location is null. Using defaults.");
@@ -230,10 +229,6 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
         }
         else{
             // Permission has already been granted
-           // sendLocationSMS("9106371048",mLastKnownLocation);
-            Log.e("message", "sent");
-            Log.e("locs",String.valueOf(mLastKnownLocation));
-            // sendLocationSMS("9033650221",mLastKnownLocation);
         }
 
     }
@@ -282,13 +277,12 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
 
-                    // permission was granted, yay! Do the
+                    // permission was granted. Do the
                     // contacts-related task you need to do.
-                   // sendLocationSMS("9033650221", mLastKnownLocation);
 
                 } else {
 
-                    // permission denied, boo! Disable the
+                    // permission denied. Disable the
                     // functionality that depends on this permission.
                     Toast.makeText(this,"Grant the sms permission",Toast.LENGTH_SHORT);
                 }
@@ -440,7 +434,7 @@ public class MapsActivityCurrentPlace extends AppCompatActivity
 
             SmsManager smsManager = SmsManager.getDefault();
             StringBuffer smsBody = new StringBuffer();
-            smsBody.append("http://maps.google.com?q=");
+            smsBody.append("http://www.google.com/maps/?q=");
             smsBody.append(currentLocation.getLatitude());
             smsBody.append(",");
             smsBody.append(currentLocation.getLongitude());
